@@ -2,6 +2,9 @@
 # no plugin updates, no attack surface beyond the web server itself.
 FROM nginx:1.31.2-alpine
 
+# Remove the listen on IPV6 by default script.
+RUN rm -f /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+
 # Remove the default nginx welcome page config
 RUN rm -f /etc/nginx/conf.d/default.conf
 
