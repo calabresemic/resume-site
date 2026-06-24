@@ -1,0 +1,51 @@
+name: Build and publish container
+
+# Builds the resume site image and pushes it to GitHub Container Registry
+# (ghcr.io) on every push to main. After this runs once, anyone with access
+# can `docker pull` the image without building it themselves.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: read
+  packages: write      # required to push to ghcr.io
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU (for multi-arch builds)
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Compute lowercase image name
+        # GHCR requires lowercase image names; this normalizes
+        # owner/repo regardless of how it's capitalized on GitHub.
+        id: vars
+        run: |
+          echo "image=ghcr.io/$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            ${{ steps.vars.outputs.image }}:latest
+            ${{ steps.vars.outputs.image }}:${{ github.sha }}
