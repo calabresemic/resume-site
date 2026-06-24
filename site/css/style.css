@@ -320,7 +320,7 @@ main {
 /* ============================================================
    CONTACT FOOTER
    ============================================================ */
-.contact { border-top: 1px solid var(--rule); padding-top: 56px; }
+/* .contact { border-top: 1px solid var(--rule); padding-top: 56px; } */
 .contact__grid {
   display: flex;
   flex-wrap: wrap;
