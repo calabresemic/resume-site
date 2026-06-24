@@ -56,8 +56,8 @@ p { margin: 0; }
 }
 
 main {
-  padding: 6vw 8vw 8vw;
-  max-width: 980px;
+  padding: clamp(32px, 6vw, 72px) clamp(24px, 7vw, 96px) clamp(48px, 8vw, 96px);
+  max-width: 1180px;
 }
 
 /* ============================================================
@@ -277,22 +277,33 @@ main {
   display: grid;
   grid-template-columns: 160px 1fr;
   gap: 24px;
+  row-gap: 14px;
 }
 .timeline__item:last-child { border-bottom: 1px solid var(--rule); }
 
 .timeline__date {
+  grid-column: 1;
+  grid-row: 1;
   font-family: var(--font-mono);
   font-size: 13px;
   color: var(--brass-text);
   padding-top: 4px;
 }
 .timeline__role {
+  grid-column: 2;
+  grid-row: 1;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 19px;
   margin: 0 0 14px;
 }
-.timeline__points { display: flex; flex-direction: column; gap: 8px; }
+.timeline__points {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 .timeline__points li {
   position: relative;
   padding-left: 18px;
