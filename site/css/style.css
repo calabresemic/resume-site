@@ -106,6 +106,10 @@ main {
   text-decoration: none;
   border-left-color: var(--brass);
 }
+.index__list a.is-active {
+  color: var(--ink);
+  border-left-color: var(--brass);
+}
 .index__num {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -244,7 +248,59 @@ main {
 }
 .cert-card:hover { background: var(--vellum-deep); }
 
-.cert-card__seal { color: var(--brass); margin-bottom: 16px; }
+.cert-card__badge {
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.cert-card__badge img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+/* Microsoft's badge has no Credly iframe, so build an equivalent 150x150
+   box by hand: the 105x105 SVG sits centered with transparent padding
+   around it, then the whole box gets scaled down 0.4267x exactly like the
+   Credly iframes, so the final on-card size and proportions match. */
+.cert-card__badge--framed {
+  position: relative;
+}
+.cert-card__badge--framed .cert-card__badge-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transform: scale(0.4267); */
+  transform-origin: top left;
+}
+.cert-card__badge--framed .cert-card__badge-frame img {
+  width: 105px;
+  height: 105px;
+  display: block;
+}
+/* Credly's iframe embed includes badge name + link text below the image by
+   default; clip the box to just the image area (top-left of the iframe)
+   so it sits in the same compact slot as the old SVG seal. */
+.cert-card__badge--embed {
+  position: relative;
+}
+.cert-card__badge--embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;   /* matches data-iframe-width so Credly's layout doesn't squish */
+  height: 150px;  /* crop to the badge image; name/link text below gets clipped */
+  border: 0;
+  transform: scale(0.4267); /* 64/150, scales the 150x150 image area down to 64x64 */
+  transform-origin: top left;
+}
 
 .cert-card__name {
   font-family: var(--font-display);
@@ -315,6 +371,84 @@ main {
   left: 0; top: 9px;
   width: 6px; height: 1px;
   background: var(--brass-text);
+}
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+.project-card {
+  background: var(--vellum);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.15s ease;
+}
+.project-card:hover { background: var(--vellum-deep); }
+
+.project-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.project-card__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.project-card__gh {
+  flex-shrink: 0;
+  color: var(--ink-soft);
+  padding-top: 2px;
+}
+.project-card__gh:hover { color: var(--brass-text); }
+
+.project-card__desc {
+  color: var(--ink);
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.project-card__stack {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--brass-text);
+  letter-spacing: 0.02em;
+  margin-bottom: 14px;
+}
+
+.project-card__links {
+  display: flex;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.project-card__tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin-bottom: 14px;
+  align-self: flex-start;
 }
 
 /* ============================================================
@@ -391,5 +525,6 @@ main {
   .hero__seal { display: none; }
   .ledger__row { grid-template-columns: 1fr; gap: 6px; }
   .cert-grid { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: 1fr; }
   .timeline__item { grid-template-columns: 1fr; gap: 8px; }
 }

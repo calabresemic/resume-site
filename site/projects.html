@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Michael Calabrese</title>
+<meta name="description" content="Selected projects by Michael Calabrese, Cyber Security/Systems Engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="frame">
+
+  <!-- Index / tab navigation -->
+  <nav class="index" aria-label="Section index">
+    <a class="index__mark" href="index.html#top">MC</a>
+    <ul class="index__list">
+      <li><a href="index.html#skills"><span class="index__num">01</span>Skills</a></li>
+      <li><a href="index.html#certifications"><span class="index__num">02</span>Certifications</a></li>
+      <li><a href="index.html#experience"><span class="index__num">03</span>Experience</a></li>
+      <li><a href="index.html#education"><span class="index__num">04</span>Education</a></li>
+      <li><a href="projects.html#top" class="is-active"><span class="index__num">05</span>Projects</a></li>
+      <li><a href="index.html#contact"><span class="index__num">06</span>Contact</a></li>
+    </ul>
+    <button class="index__toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main id="top">
+
+    <!-- ============================ HEADER ============================ -->
+    <header class="hero">
+      <div class="hero__seal" aria-hidden="true">
+        <svg viewBox="0 0 120 120" width="120" height="120">
+          <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="60" cy="60" r="46" fill="none" stroke="currentColor" stroke-width="1"/>
+          <text x="60" y="65" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="2" fill="currentColor">BUILT</text>
+        </svg>
+      </div>
+      <p class="hero__eyebrow">Selected Work — Rev. 2026</p>
+      <h1 class="hero__name">Projects</h1>
+      <p class="hero__title">Things I've built or tried to build</p>
+      <p class="hero__thesis">A working sample of personal and professional projects.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="https://github.com/calabresemic" target="_blank" rel="noopener">View GitHub profile</a>
+        <a class="btn btn--ghost" href="index.html#top">Back to resume</a>
+      </div>
+    </header>
+
+    <!-- ============================ PROJECTS ============================ -->
+    <section class="section" id="projects">
+      <h2 class="section__heading"><span class="section__tag">05 — Projects</span>Project log</h2>
+      <!-- <p class="section__lede">Duplicate a <code>.project-card</code> block per project. Drop the GitHub link if a repo doesn't exist or isn't public; the icon link is optional.</p> -->
+
+      <div class="project-grid">
+
+        <article class="project-card">
+          <div class="project-card__head">
+            <h3 class="project-card__name">This Resume Site</h3>
+            <a class="project-card__gh" href="https://github.com/calabresemic/resume-site" target="_blank" rel="noopener" aria-label="View source on GitHub">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.18a10.96 10.96 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .3.21.66.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z"/>
+              </svg>
+            </a>
+          </div>
+          <span class="project-card__tag">Infrastructure</span>
+          <p class="project-card__desc">A self-contained resume site served by nginx in Docker. Includes a GitHub Actions workflow that builds and publishes the image to GHCR on every push.</p>
+          <p class="project-card__stack">Docker · nginx · GitHub Actions · HTML/CSS/JS</p>
+          <div class="project-card__links">
+            <a href="https://github.com/calabresemic/resume-site" target="_blank" rel="noopener">View repo →</a>
+          </div>
+        </article>
+
+        <!-- EDIT ME: example with no public repo — omit the GitHub icon/link entirely -->
+        <!-- <article class="project-card">
+          <div class="project-card__head">
+            <h3 class="project-card__name">FAA NMC Polling Extension</h3>
+          </div>
+          <span class="project-card__tag">Automation</span>
+          <p class="project-card__desc">Extended an in-house network management and control application with Python to support polling of additional device types and expose a REST API for downstream tooling.</p>
+          <p class="project-card__stack">Python · REST · Internal tooling</p>
+          <div class="project-card__links">
+            <span class="contact__link--static" style="font-family:var(--font-mono); font-size:13px;">Private / not publicly available</span>
+          </div>
+        </article> -->
+
+        <!-- EDIT ME: example with both a repo and a live demo link -->
+        <!-- <article class="project-card">
+          <div class="project-card__head">
+            <h3 class="project-card__name">Homelab Ansible Playbooks</h3>
+            <a class="project-card__gh" href="https://github.com/calabresemic/homelab-ansible" target="_blank" rel="noopener" aria-label="View source on GitHub">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.18a10.96 10.96 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .3.21.66.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z"/>
+              </svg>
+            </a>
+          </div>
+          <span class="project-card__tag">Configuration management</span>
+          <p class="project-card__desc">A set of Ansible playbooks and roles for standing up and maintaining a home lab — Proxmox VM provisioning, baseline hardening, and Docker host configuration.</p>
+          <p class="project-card__stack">Ansible · Proxmox · Docker</p>
+          <div class="project-card__links">
+            <a href="https://github.com/calabresemic/homelab-ansible" target="_blank" rel="noopener">View repo →</a>
+          </div>
+        </article> -->
+
+      </div>
+    </section>
+
+    <!-- ========================== CONTACT ========================== -->
+    <footer class="contact" id="contact">
+      <h2 class="section__heading"><span class="section__tag">06 — Contact</span>Get in touch</h2>
+      <div class="contact__grid">
+        <a class="contact__link" href="mailto:hireme@michaelcalabrese.me">hireme@michaelcalabrese.me</a>
+        <a class="contact__link" href="tel:+18432244214">+1 (843) 224-4214</a>
+        <a class="contact__link" href="https://linkedin.com/in/michael-k-calabrese" target="_blank" rel="noopener">linkedin.com/in/michael-k-calabrese</a>
+        <span class="contact__link contact__link--static">Mountain Home, Idaho</span>
+      </div>
+      <p class="contact__footnote">Document last updated June 2026.</p>
+    </footer>
+
+  </main>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -27,7 +27,13 @@ if ('IntersectionObserver' in window && sections.length) {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
         navLinks.forEach(link => {
-          link.style.color = link.getAttribute('href') === `#${id}` ? 'var(--ink)' : '';
+          const href = link.getAttribute('href') || '';
+          // Only toggle highlight for same-page hash links; leave
+          // cross-page links (e.g. projects.html) and the manually
+          // applied .is-active class alone.
+          if (href.startsWith('#')) {
+            link.style.color = href === `#${id}` ? 'var(--ink)' : '';
+          }
         });
       }
     });
