@@ -1,4 +1,4 @@
-FROM nginx:1.31.5-alpine
+FROM nginx:1.31.6-alpine
 
 # Remove default Nginx configuration
 RUN rm /etc/nginx/conf.d/default.conf
